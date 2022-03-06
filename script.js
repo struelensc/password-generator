@@ -13,15 +13,12 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-  // 1. create buckets for each character type
+
+var lowercase = ["a",	"b",	"c",	"d",	"e",	"f",	"g",	"h",	"i",	"j",	"k",	"l",	"m",	"n",	"o",	"p",	"q",	"r",	"s",	"t",	"u",	"v",	"w",	"x",	"y",	"z"];
+var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 function generatePassword() {
-  // 2. get user preferences
-  // 3. collect random characters from the buckets
-  // 4. create a guaranteed collection
-  // 5. create an array for the password
-  // 6. randomly draw a character and add to array
-  // 7. loop as many times as specified
-  // 8. join array into a string
-  // 9. return string
+
 }
