@@ -20,14 +20,19 @@ var numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 function generatePassword() {
+  var numOfChar;
   var passwordBucket = [];
   var initialPassword = [];
   var finalPassword = [];
 
   // Password options element
   var passwordOptions = {
-    charStrings: ["lowercase letters", "uppercase letters", "numbers", "special characters"],
-    charArrays: [lowercase, uppercase, numeric, specialChar],
+    charAttr: {
+      "lowercase letters": lowercase,
+      "uppercase letters": uppercase,
+      "numbers": numeric,
+      "special characters": specialChar
+    },
     charFunction: function (char, bucket) {
       if (window.confirm("Would you like " + char + "?")) {
           passwordBucket.push(...bucket);
@@ -46,11 +51,13 @@ function generatePassword() {
   // Validates that the user's input for number of characters is more than 7 and less than 129.
   if (numOfChar >= 8 && numOfChar <= 128) {
     // Loops through the character questions function in the password options element using the charStrings and charArrays arrays and randomly selects one character from approved character types.
-    for (let i = 0; i < passwordOptions.charArrays.length; i++) {
-      var string = passwordOptions.charStrings[i];
-      passwordOptions.charFunction(string, passwordOptions.charArrays[i]);
-    }
+    var keyNames = Object.keys(passwordOptions.charAttr);
 
+    for (let i = 0; i < keyNames.length; i++) {
+      var string = keyNames[i];
+      passwordOptions.charFunction(string, passwordOptions.charAttr[string]);
+    }
+    
     // Fills in remaining characters with randomly selected characters from approved character types.
     for (let i = initialPassword.length; i < numOfChar; i++) {
       initialPassword.push(passwordBucket[Math.floor(Math.random() * passwordBucket.length)]);
