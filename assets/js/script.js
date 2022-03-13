@@ -25,7 +25,7 @@ function generatePassword() {
   var initialPassword = [];
   var finalPassword = [];
 
-  // Password options element
+  // Password options object
   var passwordOptions = {
     charAttr: {
       "lowercase letters": lowercase,
